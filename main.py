@@ -20,7 +20,7 @@ PERCENTUAL_RESISTENTES = 0.15 # 15% da população inicia como resistente (mas n
 SUSCETIVEL = 0
 INFECTADO = 1
 RECUPERADO = 2
-RESISTENTE = 3 # Agora: Indivíduos que são mais difíceis de serem infectados
+RESISTENTE = 3 
 
 # --- Inicialização da Grade ---
 grade_estado = np.zeros((TAMANHO_GRADE, TAMANHO_GRADE), dtype=int)
@@ -80,7 +80,7 @@ def atualizar(frame):
                         nova_grade_tempo_infectado[i, j] = 0 # Reseta o contador de tempo para o novo infectado
                         break # Já infectou, não precisa verificar outros vizinhos
             
-            elif estado_atual == RESISTENTE: # Novo tratamento para Resistentes
+            elif estado_atual == RESISTENTE: 
                 resistentes += 1
                 for vi, vj in vizinhos(i, j):
                     if grade_estado[vi, vj] == INFECTADO and random.random() < PROB_INFEC_RESISTENTE:
@@ -118,7 +118,7 @@ cores = ['#90EE90', '#FF0000', "#0381AB", "#C2DA07"]
 cmap = plt.matplotlib.colors.ListedColormap(cores)
 norm = plt.matplotlib.colors.BoundaryNorm([-0.5, 0.5, 1.5, 2.5, 3.5], cmap.N) # Define os limites para 4 estados
 
-im = ax.imshow(grade_estado, cmap=cmap, norm=norm) # Use 'norm' para mapear corretamente os 4 estados
+im = ax.imshow(grade_estado, cmap=cmap, norm=norm) 
 
 # Adiciona o colorbar com os rótulos corretos
 cbar = plt.colorbar(im, ticks=[0, 1, 2, 3], label="Estado")
@@ -130,7 +130,6 @@ ax.set_yticks([]) # Remove os ticks do eixo Y
 
 # --- Criação e Salvamento da Animação ---
 ani = animation.FuncAnimation(fig, atualizar, frames=PASSOS, interval=100, blit=True)
-# Certifique-se de que o ffmpeg esteja instalado e no PATH, ou use 'writer="pillow"' para .gif
 ani.save(os.path.join("resultados", "simulacao.mp4"), writer='ffmpeg', dpi=200)
 plt.show()
 
