@@ -19,4 +19,4 @@ python grafico_resultados.py
 
 ## 📄 Artigo
 
-A explicação científica está no arquivo `artigo/artigo_sir_autômato.docx`.
+A explicação científica está no arquivo `artigo/Artigo Automatos Celulares - Khadidja Moraes.docx`.
