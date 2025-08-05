@@ -14,7 +14,7 @@ Este projeto simula a propagação de uma doença infecciosa utilizando o modelo
 
 ```bash
 python main.py
-python grafico_resultados.py
+
 ```
 
 ## 📄 Artigo
